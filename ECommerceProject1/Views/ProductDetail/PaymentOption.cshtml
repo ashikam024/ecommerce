@@ -1,0 +1,97 @@
+﻿@model ECommerceProject1.Models.Payment
+@{
+    ViewBag.Title = "PaymentOption";
+}
+@using (Html.BeginForm("PaymentOption", "ProductDetail", FormMethod.Post))
+{
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+</head>
+<body>
+    <h2>Payment Information</h2>
+    <form action="process_payment.php" method="post">
+        <div>
+            <label for="payment_method">Select Payment Method:</label>
+            <br>
+            <input type="radio" id="credit_card" name="payment_method" value="credit_card">
+            <label for="credit_card">Credit Card</label>
+            <br>
+            <input type="radio" id="bank_transfer" name="payment_method" value="bank_transfer">
+            <label for="bank_transfer">Bank Transfer</label>
+            <br>
+            <input type="radio" id="cash_on_delivery" name="payment_method" value="cash_on_delivery">
+            <label for="cash_on_delivery">Cash On Delivery</label>
+        </div>
+
+        <br>
+
+        <div id="credit_card_details" style="display: none;">
+            <h3>Credit Card Details</h3>
+            <div>
+                <label for="card_number">Card Number:</label>
+                <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456">
+            </div>
+            <div>
+                <label for="expiry_date">Expiry Date (MM/YY):</label>
+                <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY">
+            </div>
+            <div>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123">
+            </div>
+        </div>
+
+        <div id="bank_transfer_details" style="display: none;">
+            <h3>Bank Transfer Details</h3>
+            <div>
+                <label for="account_number">Account Number:</label>
+                <input type="text" id="account_number" name="account_number" placeholder="Enter your account number">
+            </div>
+            <div>
+                <label for="bank_name">Bank Name:</label>
+                <input type="text" id="bank_name" name="bank_name" placeholder="Enter the bank name">
+            </div>
+            <div>
+                <label for="account_holder">Account Holder Name:</label>
+                <input type="text" id="account_holder" name="account_holder" placeholder="Enter the account holder's name">
+            </div>
+            <div>
+                <label for="routing_number">Routing Number:</label>
+                <input type="text" id="routing_number" name="routing_number" placeholder="Enter the routing number">
+            </div>
+        </div>
+        @Html.ActionLink("CONFIRM", "Success", "ProductDetail", null, new { @class = "btn btn-primary" })
+        <div>
+            @*<input type="submit" value="Submit Payment">*@
+        </div>
+    </form>
+
+    <script>
+        // Show/hide credit card details based on the selected payment method
+        const paymentMethod = document.getElementsByName("payment_method");
+        const creditCardDetails = document.getElementById("credit_card_details");
+        const bankTransferDetails = document.getElementById("bank_transfer_details");
+
+        for (const method of paymentMethod) {
+            method.addEventListener("change", function () {
+                if (method.value === "credit_card") {
+                    creditCardDetails.style.display = "block";
+                    bankTransferDetails.style.display = "none";
+                } else if (method.value === "bank_transfer") {
+                    bankTransferDetails.style.display = "block";
+                    creditCardDetails.style.display = "none";
+                } else {
+                    creditCardDetails.style.display = "none";
+                    bankTransferDetails.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+}
+
