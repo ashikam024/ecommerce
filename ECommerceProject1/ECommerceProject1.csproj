@@ -293,6 +293,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\blackfrockpic.jpeg" />
+    <Content Include="Image\blackhoodie.jpeg" />
     <Content Include="Image\blackmenpant.jpeg" />
     <Content Include="Image\blackmenshorts.jpeg" />
     <Content Include="Image\blackshortswomenpic.jpeg" />
