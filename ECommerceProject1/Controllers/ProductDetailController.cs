@@ -76,8 +76,8 @@ namespace ECommerceProject1.Controllers
                 var order = new Order
                 {
                     UserId = userId,
-                    UserName = username,
-                    ProductId = item.ProductId,
+                    UserName = username,                    
+                    ProductId = item.ProductId,                    
                     Price = item.Price,
                     Quantity = item.Quantity,
                     Total = item.Total
@@ -87,6 +87,10 @@ namespace ECommerceProject1.Controllers
                 if (product != null)
                 {
                     product.Availability -= item.Quantity;
+                }
+                else
+                {
+                    Console.WriteLine("unavailabile");
                 }
             }
             // Save changes to the database
