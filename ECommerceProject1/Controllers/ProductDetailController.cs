@@ -83,10 +83,15 @@ namespace ECommerceProject1.Controllers
                     Total = item.Total
                 };
                 db.Orders.Add(order);
+                var product = db.Products.FirstOrDefault(p => p.Id == item.ProductId);
+                if (product != null)
+                {
+                    product.Availability -= item.Quantity;
+                }
             }
             // Save changes to the database
             db.SaveChanges();
-
+           
             db.CartItems.RemoveRange(cartItems);
             db.SaveChanges();
 
