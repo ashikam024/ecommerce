@@ -12,6 +12,8 @@ namespace ECommerceProject1.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserType { get; set; }
+        public bool IsBlocked { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
