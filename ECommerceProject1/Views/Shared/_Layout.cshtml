@@ -29,17 +29,18 @@
                     @if (User.IsInRole(SD.EndUserRole))
                     {
                         <li>@Html.ActionLink("CART", "Show", "ProductDetail")</li>
-                    }
-                        @*<li>@Html.ActionLink("ALLPURCHASE", "AllPurchases", "ProductDetail")</li>*@
                         <li>@Html.ActionLink("ORDER", "Index", "Order")</li>
-                        @*<li>@Html.ActionLink("PROFILE", "Index", "Order")</li>*@
-                        @if (User.IsInRole(SD.AdminUserRole))
-                        {
-                            <li>@Html.ActionLink("PRODUCT", "Index", "Products")</li>
-                            <li>@Html.ActionLink("ALLORDERS", "OrderHistory", "Order")</li>
-                        }
+                    }
+                    @*<li>@Html.ActionLink("ALLPURCHASE", "AllPurchases", "ProductDetail")</li>*@
 
-                    </ul>
+                    @*<li>@Html.ActionLink("PROFILE", "Index", "Order")</li>*@
+                    @if (User.IsInRole(SD.AdminUserRole))
+                    {
+                        <li>@Html.ActionLink("PRODUCT", "Index", "Products")</li>
+                        <li>@Html.ActionLink("ALLORDERS", "OrderHistory", "Order")</li>
+                    }
+
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
