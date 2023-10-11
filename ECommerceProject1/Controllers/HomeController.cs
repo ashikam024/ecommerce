@@ -31,7 +31,6 @@ namespace ECommerceProject1.Controllers. m
                 }
                 return View(model);
             }
-
             // If search is null or empty, display all thumbnails
             var count = allThumbnails.Count() / 4;
             var modelAll = new List<ThumbnailViewModel>();
